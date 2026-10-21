@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Attendance | EduTrack</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-light">
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 2000;">
+        <div id="liveToast" class="toast align-items-center text-white bg-dark border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMsg"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
+   <nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom py-2">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="dashboard.html">
+            <img src="https://img.freepik.com/premium-vector/hand-drawn-icon-education_755164-26813.jpg?semt=ais_hybrid&w=740&q=80" 
+                 alt="EduTrack Logo" width="35" class="me-2">
+            <span class="brand-text fw-bold text-primary">EduTrack</span>
+        </a>
+        
+        <button class="navbar-toggler border-0 shadow-none" type="button" 
+                data-bs-toggle="collapse" data-bs-target="#eduNav" 
+                aria-controls="eduNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="eduNav">
+            <div class="navbar-nav ms-auto gap-2 mt-3 mt-lg-0">
+                <a href="dashboard.html" class="nav-link-custom px-3 py-2 text-center">Overview</a>
+                <a href="attendance.html" class="nav-link-custom px-3 py-2 text-center">Attendance</a>
+                <a href="planner.html" class="nav-link-custom px-3 py-2 text-center active">Planner</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="container py-4">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <div>
+            <h2 class="fw-bold mb-0">My Attendance</h2>
+            <p class="text-muted small mb-0">Track your progress and manage sessions.</p>
+        </div>
+        <button class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-sm d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#setupSubjectModal">
+            <i data-lucide="plus-circle" style="width:18px"></i> New Schedule
+        </button>
+    </div>
+
+    <div id="attendanceGrid" class="row g-4"></div>
+</main>
+
+
+    <div class="modal fade" id="extraClassModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content border-0 shadow" style="border-radius: 20px;">
+                <div class="modal-body p-4 text-center">
+                    <div class="icon-circle bg-soft-primary text-primary mb-3 mx-auto"><i data-lucide="calendar-plus"></i></div>
+                    <h5 class="fw-bold">Extra Class Date</h5>
+                    <input type="date" id="extraClassDate" class="form-control mt-3 border-2 rounded-3">
+                    <input type="hidden" id="activeSubIdx">
+                    <div class="d-grid gap-2 mt-4">
+                        <button class="btn btn-primary rounded-pill fw-bold" onclick="confirmExtraClass()">Add Session</button>
+                        <button class="btn btn-light rounded-pill fw-bold text-muted" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content border-0 shadow" style="border-radius: 20px;">
+                <div class="modal-body p-4 text-center">
+                    <div class="icon-circle bg-light-danger text-danger mb-3 mx-auto"><i data-lucide="trash-2"></i></div>
+                    <h5 class="fw-bold">Remove Subject?</h5>
+                    <p class="text-muted small">All records will be lost.</p>
+                    <input type="hidden" id="deleteSubIdx">
+                    <div class="d-grid gap-2 mt-4">
+                        <button class="btn btn-danger rounded-pill fw-bold" onclick="confirmDelete()">Delete Anyway</button>
+                        <button class="btn btn-light rounded-pill fw-bold" data-bs-dismiss="modal">Go Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="setupSubjectModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow" style="border-radius: 24px;">
+                <div class="modal-header border-0 pb-0"><h5 class="fw-bold">Setup Schedule</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body p-4">
+                    <div class="mb-3"><label class="small fw-bold">SUBJECT NAME</label><input type="text" id="subName" class="form-control rounded-3" placeholder="e.g. Physics"></div>
+                    <div class="row g-2 mb-3">
+                        <div class="col-6"><label class="small fw-bold">START DATE</label><input type="date" id="startDate" class="form-control"></div>
+                        <div class="col-6"><label class="small fw-bold">END DATE</label><input type="date" id="endDate" class="form-control"></div>
+                    </div>
+                    <label class="small fw-bold mb-2">CLASS DAYS</label>
+                    <div class="d-flex justify-content-between bg-light p-3 rounded-4" id="dayPicker">
+                        <input type="checkbox" class="btn-check" id="mon" value="1"><label class="btn btn-outline-primary day-btn" for="mon">M</label>
+                        <input type="checkbox" class="btn-check" id="tue" value="2"><label class="btn btn-outline-primary day-btn" for="tue">T</label>
+                        <input type="checkbox" class="btn-check" id="wed" value="3"><label class="btn btn-outline-primary day-btn" for="wed">W</label>
+                        <input type="checkbox" class="btn-check" id="thu" value="4"><label class="btn btn-outline-primary day-btn" for="thu">T</label>
+                        <input type="checkbox" class="btn-check" id="fri" value="5"><label class="btn btn-outline-primary day-btn" for="fri">F</label>
+                        <input type="checkbox" class="btn-check" id="sat" value="6"><label class="btn btn-outline-primary day-btn" for="sat">S</label>
+                    </div>
+                    <button class="btn btn-primary w-100 rounded-pill py-3 mt-4 fw-bold" onclick="generateSchedule()">Generate Semester Classes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+    <div id="liveToast" class="toast border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-white text-dark">
+            <i data-lucide="bell" class="text-primary me-2" style="width: 18px;"></i>
+            <strong class="me-auto">EduTrack System</strong>
+            <small class="text-muted">Just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" id="toastMessage">
+            </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/attendance.js"></script>
+    <script>lucide.createIcons();</script>
+    <script src="js/config.js"></script>
+</body>
+</html>

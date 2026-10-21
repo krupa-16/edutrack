@@ -1,0 +1,11 @@
+# Ignore sensitive environment variables
+.env
+server/.env
+
+# Ignore heavy library folders
+node_modules/
+server/node_modules/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db

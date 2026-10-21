@@ -1,0 +1,642 @@
+:root {
+    --primary: #4f46e5;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --bg-gray: #f8fafc;
+}
+
+body { font-family: 'Inter', sans-serif; background: var(--bg-gray); }
+
+/* Navigation */
+.navbar { background: white; border-bottom: 1px solid #e2e8f0; }
+.nav-link.active { color: var(--primary) !important; font-weight: 600; border-bottom: 2px solid var(--primary); }
+
+/* Cards & Progress */
+.card { border: none; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+.progress-circle {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: conic-gradient(var(--color) var(--perc), #e2e8f0 0deg);
+    display: flex; align-items: center; justify-content: center; position: relative;
+}
+.progress-circle::after { content: ""; width: 64px; height: 64px; background: white; border-radius: 50%; position: absolute; }
+.progress-circle span { position: relative; z-index: 10; font-weight: bold; }
+
+/* Buttons */
+.btn-primary { background: var(--primary); border: none; border-radius: 10px; padding: 10px 20px; }
+:root {
+    --primary-indigo: #4f46e5;
+    --bg-soft: #f1f5f9;
+}
+
+body {
+    background-color: var(--bg-soft);
+    font-family: 'Inter', sans-serif;
+}
+
+.auth-card {
+    border: none;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.auth-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.form-control {
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+.form-control:focus {
+    border-color: var(--primary-indigo);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.btn-auth {
+    background-color: var(--primary-indigo);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-auth:hover {
+    background-color: #4338ca;
+    color: white;
+    transform: translateY(-1px);
+}
+/* Navigation Buttons */
+.btn-outline-primary { border: 2px solid #4f46e5; color: #4f46e5; }
+.btn-outline-success { border: 2px solid #10b981; color: #10b981; }
+.btn-outline-info { border: 2px solid #06b6d4; color: #06b6d4; }
+.btn-outline-secondary { border: 2px solid #64748b; color: #64748b; }
+
+/* Hover effects */
+.btn-outline-primary:hover { background: #4f46e5; color: white; }
+.btn-outline-success:hover { background: #10b981; color: white; }
+.btn-outline-info:hover { background: #06b6d4; color: white; }
+
+/* Profile Card Customization */
+.card {
+    transition: all 0.3s ease;
+}
+
+#profileAvatar {
+    border: 4px solid #f1f5f9;
+}
+.progress-circle {
+  --w: 55px;
+  width: var(--w); height: var(--w);
+  border-radius: 50%;
+  display: flex; justify-content: center; align-items: center;
+  background: conic-gradient(var(--c) calc(var(--p) * 1%), #f0f0f0 0);
+  position: relative; font-size: 0.75rem; font-weight: bold;
+}
+.progress-circle::after {
+  content: ""; position: absolute; width: 85%; height: 85%;
+  background: white; border-radius: 50%;
+}
+.progress-circle span { z-index: 1; }
+
+.btn-soft-primary {
+    background-color: #e0e7ff;
+    color: #4338ca;
+    border: none;
+}
+
+/* Custom Scrollbar for the date list */
+.bg-light::-webkit-scrollbar { width: 5px; }
+.bg-light::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+/* Donut Chart */
+.progress-circle {
+  --w: 50px;
+  width: var(--w); height: var(--w);
+  border-radius: 50%;
+  display: flex; justify-content: center; align-items: center;
+  background: conic-gradient(var(--c) calc(var(--p) * 1%), #f0f0f0 0);
+  position: relative; font-size: 0.7rem; font-weight: bold;
+}
+.progress-circle::after {
+  content: ""; position: absolute; width: 84%; height: 84%;
+  background: white; border-radius: 50%;
+}
+.progress-circle span { z-index: 1; }
+
+/* Day Buttons in Modal */
+.day-btn {
+    width: 35px; height: 35px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0; font-size: 0.75rem; font-weight: bold;
+}
+
+/* Extra Class Button Style */
+.btn-soft-primary {
+    background-color: #eef2ff;
+    color: #4f46e5;
+    border: none;
+}
+.btn-soft-primary:hover {
+    background-color: #e0e7ff;
+}
+
+/* Custom Scrollbar for Dates */
+.bg-light::-webkit-scrollbar { width: 4px; }
+.bg-light::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+/* --- INTERACTIVE ATTENDANCE BUTTONS --- */
+.status-group {
+    display: flex;
+    gap: 8px;
+    background: #f8fafc;
+    padding: 4px;
+    border-radius: 12px;
+}
+
+.btn-status {
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background: white;
+    color: #64748b;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Hover Effects */
+.btn-status:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Active State: PRESENT (Green) */
+.btn-present.active {
+    background: #10b981 !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    transform: scale(1.1);
+}
+
+/* Active State: ABSENT (Red) */
+.btn-absent.active {
+    background: #ef4444 !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+    transform: scale(1.1);
+}
+
+/* Active State: SUSPENDED (Slate) */
+.btn-suspended.active {
+    background: #64748b !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(100, 116, 139, 0.4);
+    transform: scale(1.1);
+}
+
+/* Dimming unselected buttons */
+.status-group:has(.active) .btn-status:not(.active) {
+    opacity: 0.6;
+    filter: grayscale(0.5);
+}
+
+/* Scrollbar Styling */
+.date-list-container::-webkit-scrollbar { width: 5px; }
+.date-list-container::-webkit-scrollbar-track { background: transparent; }
+.date-list-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+.icon-circle {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+}
+.bg-soft-primary { background: #eef2ff; color: #4f46e5; }
+.bg-light-danger { background: #fef2f2; color: #ef4444; }
+
+.status-group { display: flex; gap: 6px; background: white; padding: 4px; border-radius: 12px; }
+.btn-status {
+    border: none; width: 32px; height: 32px; border-radius: 8px;
+    font-weight: bold; background: #f1f5f9; color: #94a3b8; transition: 0.2s;
+}
+.btn-present.active { background: #10b981; color: white; box-shadow: 0 4px 10px rgba(16,185,129,0.4); transform: scale(1.1); }
+.btn-absent.active { background: #ef4444; color: white; box-shadow: 0 4px 10px rgba(239,68,68,0.4); transform: scale(1.1); }
+.btn-suspended.active { background: #64748b; color: white; box-shadow: 0 4px 10px rgba(100,116,139,0.4); transform: scale(1.1); }
+
+.date-list-container::-webkit-scrollbar { width: 4px; }
+.date-list-container::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+/* --- DASHBOARD-STYLE OUTLINES --- */
+.attendance-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 5px solid #e2e8f0; /* Default neutral border */
+}
+
+/* Card Health States */
+.card-success { 
+    border-top-color: #10b981 !important; 
+    box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.1); 
+}
+.card-warning { 
+    border-top-color: #f59e0b !important; 
+    box-shadow: 0 10px 20px -5px rgba(245, 158, 11, 0.1); 
+}
+.card-danger { 
+    border-top-color: #ef4444 !important; 
+    box-shadow: 0 10px 20px -5px rgba(239, 68, 68, 0.1); 
+}
+
+/* Hover effect like dashboard */
+.attendance-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo Styling */
+.navbar-logo {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+/* --- NAVIGATION HIGHLIGHTS --- */
+.nav-btn {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 8px 20px;
+    border-radius: 50px;
+    color: #64748b; /* Muted Slate */
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.nav-btn:hover {
+    color: #4f46e5;
+    background-color: #f8fafc;
+}
+
+/* Active Highlight Style (Like Dashboard Outlines) */
+.nav-btn.active {
+    color: #10b981; /* Success Green */
+    background-color: #ecfdf5;
+    border-color: #10b981;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.1);
+}
+
+/* Special case for Planner/Overview if you want different colors when active */
+/* Dashboard (Indigo) */
+.nav-btn[href="dashboard.html"].active {
+    color: #4f46e5;
+    background-color: #eef2ff;
+    border-color: #4f46e5;
+}
+
+/* Planner (Info Blue) */
+.nav-btn[href="planner.html"].active {
+    color: #0ea5e9;
+    background-color: #f0f9ff;
+    border-color: #0ea5e9;
+}
+
+/* Navbar Logo Fix */
+.navbar-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+/* --- PLANNER SPECIFIC --- */
+.task-card {
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.task-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+}
+
+.bg-soft-danger { background-color: #fee2e2; }
+.bg-soft-warning { background-color: #fef3c7; }
+.bg-soft-info { background-color: #e0f2fe; }
+
+.form-check-input:checked {
+    background-color: #10b981;
+    border-color: #10b981;
+}
+/* --- POMODORO STYLES --- */
+.timer-card {
+    background: linear-gradient(145deg, #ffffff, #f1f5f9);
+    border-top: 5px solid #4f46e5 !important;
+}
+
+.btn-timer {
+    border: none;
+    background: transparent;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: #64748b;
+    padding: 5px 12px;
+    border-radius: 50px;
+    transition: 0.2s;
+}
+
+.btn-timer.active {
+    background: #4f46e5;
+    color: white;
+    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+}
+
+.timer-display h1 {
+    font-variant-numeric: tabular-nums;
+    color: #1e293b;
+}
+
+/* --- SUBJECT TAGS --- */
+.subject-tag {
+    background: #f1f5f9;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.subject-tag:hover {
+    background: #e2e8f0;
+}
+/* --- SECTION STYLING --- */
+.type-indicator {
+    width: 6px;
+    height: 35px;
+    border-radius: 10px;
+}
+.bg-upload { background: #6366f1; }
+.bg-assignment { background: #10b981; }
+.bg-exam { background: #ef4444; }
+
+/* --- EXPANDABLE CARDS --- */
+.expandable-card {
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.expandable-card.expanded {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+    transform: scale(1.01);
+}
+
+.cursor-pointer { cursor: pointer; }
+
+/* --- POMODORO --- */
+.pomodoro-panel {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-top: 6px solid #1b10e8 !important;
+}
+
+.btn-timer {
+    border: 2px solid #e2e8f0;
+    background: white;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 6px 15px;
+    border-radius: 50px;
+    color: #64748b;
+}
+
+.btn-timer.active {
+    background: #4f46e5;
+    color: white;
+    border-color: #4f46e5;
+}
+
+.bg-soft-danger { background: #fee2e2; }
+.text-danger { color: #ef4444; }
+/* --- COLUMN WRAPPERS --- */
+.glass-column {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    min-height: 80vh;
+}
+
+.column-workload { background-color: #f0f7ff; } /* Light Blue Tint */
+.column-exams { background-color: #fff5f5; }    /* Light Red Tint */
+.column-tools { background-color: #f8fafc; }    /* Light Slate Tint */
+
+.icon-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.task-scroll-area {
+    max-height: 65vh;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* --- CARD REFINEMENTS --- */
+.expandable-card {
+    border: 1px solid rgba(0,0,0,0.05) !important;
+    transition: all 0.25s ease;
+    border-radius: 18px !important;
+}
+
+.expandable-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.05) !important;
+}
+
+/* --- STATUS INDICATORS --- */
+.status-pill {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 50px;
+}
+
+.status-pending { background: #e2e8f0; color: #475569; }
+.status-completed { background: #dcfce7; color: #166534; }
+
+/* --- POMODORO --- */
+.pomodoro-display {
+    background: white;
+    border-radius: 24px;
+    border-bottom: 5px solid #4f46e5;
+}
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: white;
+        margin-top: 15px;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(34, 40, 209, 0.1);
+    }
+    .nav-link-custom {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+}
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: white;
+        margin-top: 15px;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .nav-link-custom {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+}
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: #fdfdfd;
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+        margin-top: 1rem;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        border: 1px solid #eee;
+    }
+    
+    .navbar-collapse .btn {
+        width: 100%; /* Makes buttons full-width on mobile for easier tapping */
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+}
+/* Base Button Style */
+.nav-link-custom {
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 50px; /* Makes them pill-shaped */
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    color: #555;
+    border: 1px solid #eee; /* Light border for "outline" look */
+    display: inline-block;
+}
+
+/* Hover Effect */
+.nav-link-custom:hover {
+    background-color: #f0f7ff;
+    color: #0d6efd;
+    transform: translateY(-2px); /* Slight lift on hover */
+    border-color: #0d6efd;
+}
+
+/* Active Page Style (The "Solid" Button) */
+.nav-link-custom.active {
+    background-color: #0d6efd;
+    color: white !important;
+    border-color: #0d6efd;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.2);
+}
+
+/* Mobile Alignment */
+@media (max-width: 991px) {
+    .nav-link-custom {
+        margin-bottom: 8px;
+        width: 100%; /* Makes them full-width on mobile for easy tapping */
+        text-align: center;
+    }
+}
+#toastContainer { 
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 10000; /* Increased to stay above modals */
+    pointer-events: none; 
+}
+.custom-toast { 
+    pointer-events: auto; /* Allows interaction if needed */
+    background: white; 
+    padding: 15px 25px; 
+    border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+    margin-top: 10px; 
+    transition: 0.5s; 
+}
+/* planner.html priority colours*/
+/* Applied via the ${pClass} variable in JS */
+
+/* Sidebar Priority Colors matching image_2dc447.png */
+.p-high { 
+    border-left: 8px solid #ef4444 !important; /* Red */
+}
+.p-medium { 
+    border-left: 8px solid #f59e0b !important; /* Orange/Yellow */
+}
+.p-low { 
+    border-left: 8px solid #10b981 !important; /* Green */
+}
+
+/* Specific styling for the card shape */
+.expandable-card {
+    border: 1px solid #f1f5f9;
+    border-radius: 16px !important; /* Matches rounded UI in screenshots */
+    background: #ffffff;
+    transition: all 0.2s ease;
+}
+
+/* Ensure the side border follows the card's curve */
+.expandable-card.p-high, .expandable-card.p-medium, .expandable-card.p-low {
+    border-top-left-radius: 16px !important;
+    border-bottom-left-radius: 16px !important;
+}
+
+/* Timer Circle Styling from image_2dc447.png */
+.timer-container {
+    background: #f8fafc;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    border: 8px solid #e2e8f0;
+}
+/* Custom Delete Modal Styling */
+#deleteConfirmModal .modal-content {
+    padding: 1rem;
+}
+
+#deleteConfirmModal h4 {
+    color: #1e293b;
+    font-size: 1.5rem;
+}
+
+#deleteConfirmModal .text-muted {
+    color: #64748b !important;
+}
+
+#deleteConfirmModal .btn-danger:active {
+    transform: scale(0.98);
+    background-color: #be123c !important;
+}
+
+#deleteConfirmModal .btn-light:hover {
+    background-color: #f1f5f9;
+}

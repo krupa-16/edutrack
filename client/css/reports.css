@@ -1,0 +1,100 @@
+:root {
+    --primary: #4f46e5;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --dark: #1e293b;
+    --muted: #64748b;
+    --bg-light: #f8fafc;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--dark);
+    -webkit-print-color-adjust: exact; /* Ensures colors print correctly */
+    print-color-adjust: exact;
+}
+
+/* Cleaner Navbar Links */
+.nav-link { color: var(--muted); transition: color 0.2s; }
+.nav-link:hover, .nav-link.active { color: var(--primary); }
+
+/* Main Content Container */
+.report-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.report-card:hover { border-color: rgba(79, 70, 229, 0.1); }
+
+/* Streak Card Special Styling */
+.streak-card {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border-color: #fed7aa;
+}
+
+/* Typography tweaks */
+.fw-black { font-weight: 800; }
+.small { font-size: 0.85rem; }
+
+/* Table styling */
+.table thead th {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    border-bottom-width: 1px;
+}
+.table-hover tbody tr:hover { background-color: var(--bg-light); }
+
+/* Badge for percentages in table */
+.perc-badge {
+    padding: 4px 10px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+.perc-high { background: #dcfce7; color: #166534; }
+.perc-mid { background: #fef3c7; color: #92400e; }
+.perc-low { background: #fee2e2; color: #991b1b; }
+
+/* Adjust chart responsiveness */
+canvas { max-width: 100%; }
+
+/* === PRINT / PDF STYLES === */
+.no-print { display: none !important; } /* Hides elements during print */
+.page-break { page-break-before: always; } /* Forces a new page in PDF */
+
+@media print {
+    body { background-color: white; }
+    main { padding: 20px !important; }
+    .report-card {
+        box-shadow: none;
+        border: 1px solid #e2e8f0;
+        break-inside: avoid; /* Prevents cards from splitting across pages */
+    }
+    /* Ensure background colors are printed */
+    .streak-card, .progress-bar, .perc-badge, .badge {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+.toast {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.toast-header {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Ensure toast is visible over the printable area */
+@media print {
+    .toast-container {
+        display: none !important;
+    }
+}

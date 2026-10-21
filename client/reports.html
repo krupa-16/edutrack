@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Report | EduTrack</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/style.css"> <style>
+        .navbar-brand img { height: 40px; width: auto; object-fit: contain; }
+        .report-card { background: white; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); height: 100%; }
+        .streak-card { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-color: #fed7aa; }
+        .perc-badge { padding: 4px 10px; border-radius: 30px; font-size: 0.75rem; font-weight: 700; }
+        .perc-high { background: #dcfce7; color: #166534; }
+        .perc-mid { background: #fef3c7; color: #92400e; }
+        .perc-low { background: #fee2e2; color: #991b1b; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom no-print">
+    <div class="container-fluid px-lg-5">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="dashboard.html">
+            <img src="https://img.freepik.com/premium-vector/hand-drawn-icon-education_755164-26813.jpg?semt=ais_hybrid&w=740&q=80" alt="EduTrack Logo"> 
+            <span class="fw-bold fs-4">EduTrack</span>
+        </a>
+        <div class="navbar-nav ms-auto gap-3">
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="attendance.html" class="nav-link">Attendance</a>
+            <a href="planner.html" class="nav-link">Planner</a>
+            <a href="reports.html" class="nav-link active text-primary">Reports</a>
+        </div>
+    </div>
+</nav>
+
+<main class="container-fluid px-lg-5 py-4" id="printableArea">
+    <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+        <div>
+            <h3 class="fw-bold mb-1">Academic Performance Report</h3>
+            <p class="text-muted mb-0" id="reportDate">Loading...</p>
+        </div>
+        <button class="btn btn-primary btn-sm rounded-pill px-4 no-print" onclick="exportToPDF()">Export PDF</button>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="report-card p-4">
+                <small class="text-muted fw-bold">AVG ATTENDANCE</small>
+                <h2 class="fw-bold mb-3" id="kpiAttendance">--%</h2>
+                <div class="progress" style="height: 6px;"><div id="kpiAttBar" class="progress-bar bg-primary" style="width: 0%"></div></div>
+                <small class="text-muted mt-2 d-block" id="kpiAttSub">Loading data...</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="report-card p-4">
+                <small class="text-muted fw-bold">TASK COMPLETION</small>
+                <h2 class="fw-bold mb-3" id="kpiCompletion">--%</h2>
+                <div class="progress" style="height: 6px;"><div id="kpiCompBar" class="progress-bar bg-success" style="width: 0%"></div></div>
+                <div class="d-flex justify-content-between mt-2 small fw-bold">
+                    <span class="text-success" id="kpiDoneCount">0 Done</span>
+                    <span class="text-warning" id="kpiPendingCount">0 Pending</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="report-card p-4 streak-card text-center d-flex flex-column justify-content-center">
+                <h6 class="text-warning fw-bold small">CONSISTENCY STREAK</h6>
+                <div class="d-flex align-items-center justify-content-center gap-2">
+                    <h1 class="fw-bold mb-0 display-4 text-warning" id="kpiStreak">0</h1>
+                    <i data-lucide="flame" class="text-warning"></i>
+                </div>
+                <span class="fw-bold text-warning small">DAYS</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-lg-8">
+            <div class="report-card p-4">
+                <h6 class="fw-bold mb-4">Attendance Analysis</h6>
+                <div style="height: 350px;"><canvas id="attendanceBarChart"></canvas></div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="report-card p-4">
+                <h6 class="fw-bold mb-4">Priority Distribution</h6>
+                <div style="height: 250px;"><canvas id="plannerDoughnutChart"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="report-card p-0 overflow-hidden">
+        <div class="p-3 border-bottom bg-light fw-bold small text-muted">SUBJECT-WISE BREAKDOWN</div>
+        <table class="table table-hover mb-0 align-middle">
+            <thead class="bg-light small">
+                <tr><th class="ps-4">Subject</th><th class="text-center">Sessions</th><th class="text-end pe-4">Status</th></tr>
+            </thead>
+            <tbody id="attendanceDetailsBody"></tbody>
+        </table>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/reports.js"></script>
+<script src="js/config.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

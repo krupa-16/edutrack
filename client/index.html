@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack | Master Your Studies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root { --indigo: #4f46e5; --soft-bg: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background: white; }
+        .navbar-brand img { border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .hero { padding: 80px 0; background: linear-gradient(180deg, #f0f3ff 0%, #ffffff 100%); }
+        .feature-card { border: none; border-radius: 20px; transition: 0.3s; background: #fdfdfd; border: 1px solid #f1f5f9; }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .icon-box { width: 50px; height: 50px; background: #eef2ff; color: var(--indigo); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg py-3 sticky-top bg-white border-bottom">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center fw-bold text-primary" href="#">
+            <img src="https://img.freepik.com/premium-vector/hand-drawn-icon-education_755164-26813.jpg?semt=ais_hybrid&w=740&q=80" alt="Logo" width="40" class="me-2">
+            EduTrack
+        </a>
+        <div class="ms-auto">
+            <a href="login.html" class="btn btn-link text-dark text-decoration-none fw-medium">Log in</a>
+            <a href="register.html" class="btn btn-primary px-4 rounded-pill">Sign Up Free</a>
+        </div>
+    </div>
+</nav>
+
+<header class="hero text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold mb-4">Your Academic Journey, <br><span class="text-primary">Perfectly Organized.</span></h1>
+        <p class="lead text-muted mb-5 mx-auto" style="max-width: 700px;">Stop guessing and start growing. Track your attendance with smart logic and plan your study sessions in one focused dashboard.</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="register.html" class="btn btn-primary btn-lg px-5 shadow">Get Started</a>
+            <a href="#features" class="btn btn-outline-dark btn-lg px-5">Explore Features</a>
+        </div>
+    </div>
+</header>
+
+<section id="features" class="py-5 container">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card feature-card h-100 p-4">
+                <div class="icon-box"><i data-lucide="check-circle"></i></div>
+                <h4 class="fw-bold">Smart Attendance</h4>
+                <p class="text-muted">Automatically calculates your "Attendance Health" while correctly ignoring suspended or extra classes.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card feature-card h-100 p-4">
+                <div class="icon-box"><i data-lucide="layout"></i></div>
+                <h4 class="fw-bold">Study Planner</h4>
+                <p class="text-muted">Organize your syllabus into actionable tasks. Track your progress from "To-Do" to "Mastered."</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card feature-card h-100 p-4">
+                <div class="icon-box"><i data-lucide="download"></i></div>
+                <h4 class="fw-bold">Export Reports</h4>
+                <p class="text-muted">Generate professional CSV reports of your performance to share with mentors or for your own records.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>lucide.createIcons();</script>
+
+</body>
+</html>
